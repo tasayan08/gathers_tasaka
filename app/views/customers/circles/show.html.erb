@@ -1,0 +1,11 @@
+<h1>サークル詳細</h1>
+<div class="post-body">
+  <%#= attachment_image_tag @post_image, :image %>
+  <p>サークル名：<%= @circle.circle_name %></p>
+  <p>サークル説明：<%= @circle.explanation %></p>
+  <p>ユーザーネーム：<%= @circle.customer.name %></p>
+  <p>活動場所：<%= @circle.place %></p>
+  <p>ジャンル:<%= @circle.genre.genre_name %></p>
+  <p><%= link_to "このサークルを編集する", edit_customer_circle_path %></p>
+  <p><%=link_to "このサークルを削除する", customer_circle_path, method: :delete %></p>
+</div>

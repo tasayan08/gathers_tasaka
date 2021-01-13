@@ -1,0 +1,8 @@
+<h1>サークル編集</h1>
+<%= form_with model: @circle, url: customer_circle_path, local:true do |f| %>
+  <h4>サークル名</h4>
+  <%= f.text_field :circle_name, autofocus: true, placeholder:"サークル名"%>
+  <h4>サークル紹介</h4>
+  <%= f.text_area :explanation, autofocus: true, placeholder:"サークル紹介"%>
+  <%= f.submit "変更を保存" %>
+<% end %>

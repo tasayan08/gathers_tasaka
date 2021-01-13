@@ -1,0 +1,2 @@
+class Ivenmt < ApplicationRecord
+end

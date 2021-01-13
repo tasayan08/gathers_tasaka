@@ -1,0 +1,17 @@
+<h1>マイページ</h1>
+ <h4>名前</h4>
+ <%= @customer.name %>
+ <h4>自己紹介</h4>
+ <%= @customer.body %>
+ 
+ <li>
+  <%= link_to 'サークルを作る', new_customer_circle_path %>
+ </li>
+ <li>
+  <%= link_to 'マイサークル一覧', customer_circles_path %>
+ </li>
+ <li>
+ <% if customer_signed_in? && @customer.id == current_customer.id %>
+  <%= link_to "退会", customer_withdraw_path(current_customer), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+ <% end %>
+ </li>

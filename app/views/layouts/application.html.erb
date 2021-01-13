@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Gatherss</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <% if customer_signed_in? %>
+     <li>
+      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+     </li>
+     <li>
+      <%= link_to 'マイページ', customer_my_page_path(current_customer.id) %>
+     </li>
+     <li>
+      <%= link_to 'マイページ編集', customer_my_page_edit_path(current_customer.id) %>
+     </li>
+    <% elsif admin_signed_in? %>
+     <li>
+      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+     </li>
+     <li>
+      <%= link_to "ジャンル一覧&追加", admins_genres_path %>
+     </li>
+    <% else %>
+     <li>
+       <%= link_to "新規admin登録",new_admin_registration_path %>
+     </li>
+     <li>
+       <%= link_to "新規会員登録", new_customer_registration_path %>
+     </li>
+     <li>
+       <%= link_to "会員ログイン", new_customer_session_path %>
+     </li>
+     <li>
+       <%= link_to "adminログイン",new_admin_session_path %>
+     </li>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>
