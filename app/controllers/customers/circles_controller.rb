@@ -6,6 +6,8 @@ class Customers::CirclesController < ApplicationController
 
   def show
     @circle = Circle.find(params[:id])
+    @c = @circle.place
+    @p = JpPrefecture::Prefecture.find(@c)
   end
 
   def new
@@ -20,7 +22,6 @@ class Customers::CirclesController < ApplicationController
     else
       render "new"
     end
-
   end
 
   def edit
@@ -35,15 +36,18 @@ class Customers::CirclesController < ApplicationController
 
   def destroy
     @circle = Circle.find(params[:id])
-    @circle.destroy
-    redirect_to customer_circles_path
+    if @circle.destroy
+     redirect_to customer_circles_path
+    else
+     render "show"
+    end
   end
 
 
   private
 
   def circle_params
-    params.require(:circle).permit(:image, :explanation, :circle_name, :place, :genre_id)
+    params.require(:circle).permit(:image, :explanation, :circle_name, :place, :genre_id, :customer_id)
   end
 
 end

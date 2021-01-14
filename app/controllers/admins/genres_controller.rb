@@ -5,7 +5,6 @@ class Admins::GenresController < ApplicationController
   end
 
   def create
-    binding.pry
     @genre = Genre.new(genre_params)
     # @genre.genre_name = params[:genre][:genre_name]
     if @genre.save
@@ -29,7 +28,7 @@ class Admins::GenresController < ApplicationController
       render "edit"
     end
   end
-  
+
   def destroy
     @genre = Genre.find(params[:id])
     @genre.destroy

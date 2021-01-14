@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'ivents/index'
+  get 'ivents/show'
+  get 'ivents/edit'
+  get 'ivents/new'
   devise_for :admins, controllers: {
     registrations: 'admins/registrations',
     sessions: 'admins/sessions',
@@ -21,25 +25,27 @@ Rails.application.routes.draw do
     resources :genres, :only => [:index, :create, :edit, :update, :destroy]
   end
 
-    
-  
+
+
   scope module: :customers do
     resources :customers,:except => [:show, :edit, :new, :create] do
-      resources :circles
+      resources :circles do
+       resources :ivents
+      end
       get "/my_page" => "customers#show"
       get "/my_page/edit" => "customers#edit"
       get "/unsubscribe" => "customers#unsubscribe"
       patch "/withdraw" => "customers#withdraw"
     end
   end
-  
-end   
+
+end
 
 #一つ目の「customers」はデバイスのリソース
 #2つ目の「customers」は
   # scope module: :customers do
   #   resources :customer,:exept => [:show, :edit, :destroy] do
-  #   resources :circles 
+  #   resources :circles
   #   collection do
   #   get "/my_page" => "customers#show"
   #   get "/my_page/edit" => "customers#edit"

@@ -1,0 +1,11 @@
+<h1>イベント一覧</h1>
+<% @ivents.each do |ivent| %>
+<div>
+  <%#= attachment_image_tag post_image, :image %>
+  <p>投稿ユーザー画像：</p>
+  <p>イベント名：<%= link_to ivent.title, customer_circle_ivent_path(ivent.customer_id, ivent.circle_id, ivent.id) %></p>
+  <p>イベント内容：<%= ivent.body %></p>
+  <p>サークルネーム：<%= ivent.circle.circle_name %></p>
+  <h3>--------------------------------------</h3>
+</div>
+<% end %>

@@ -1,0 +1,9 @@
+<h1>イベント詳細</h1>
+<div class="post-body">
+  <%#= attachment_image_tag @post_image, :image %>
+  <p>イベント名：<%= @ivent.title %></p>
+  <p>サークル説明：<%= @ivent.body %></p>
+  <p>サークル名：<%= @ivent.circle.circle_name %></p>
+  <p><%= link_to "このイベントを編集する", edit_customer_circle_ivent_path %></p>
+  <p><%=link_to "このイベントを削除する", customer_circle_ivent_path, method: :delete %></p>
+</div>

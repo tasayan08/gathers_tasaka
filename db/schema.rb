@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 2021_01_12_024712) do
     t.datetime "updated_at", null: false
     t.integer "customer_id"
     t.integer "genre_id"
-    t.integer "place_id"
   end
 
   create_table "customers", force: :cascade do |t|
@@ -60,8 +59,11 @@ ActiveRecord::Schema.define(version: 2021_01_12_024712) do
   end
 
   create_table "ivenmts", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "circle_id"
     t.string "title"
     t.text "body"
+    t.string "image"
     t.boolean "active_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
