@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  get 'reviews/new'
+  get 'reviews/create'
+  get 'reviews/destroy'
   get 'ivents/index'
   get 'ivents/show'
   get 'ivents/edit'
@@ -30,6 +33,7 @@ Rails.application.routes.draw do
   scope module: :customers do
     resources :customers,:except => [:show, :edit, :new, :create] do
       resources :circles do
+       resources :reviews
        resources :ivents
       end
       get "/my_page" => "customers#show"

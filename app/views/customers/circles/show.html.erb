@@ -6,8 +6,22 @@
   <p>ユーザーネーム：<%= @circle.customer.name %></p>
   <p>活動場所：<%= @p.name %></p>
   <p>ジャンル:<%= @circle.genre.genre_name %></p>
+  <span>評価：</span>
+  <span id ="star-rate-<%= @circle.id %>"></span>
+    <script>
+      $('#star-rate-<%= @circle.id %>').raty({
+        size: 36,
+        starOff: "<%= asset_path('star-off.png') %>",
+        starOn: "<%= asset_path('star-on.png') %>",
+        starHalf: "<%= asset_path('star-half.png') %>",
+        readOnly: true,
+        score: <%= @review_ave %>,
+      });
+    </script>
+  <%= @review_ave %> (<%= link_to @reviews.size,"/" %>)
   <p><%= link_to "このサークルを編集する", edit_customer_circle_path %></p>
   <p><%= link_to "このサークルのイベントを追加する", new_customer_circle_ivent_path(@circle.customer_id,@circle.id) %></p>
   <p><%= link_to "このサークルのイベント一覧", customer_circle_ivents_path(@circle.customer_id,@circle.id) %></p>
+  <p><%= link_to "このサークルを評価する", new_customer_circle_review_path(@circle.customer_id,@circle.id) %></p>
   <p><%=link_to "このサークルを削除する", customer_circle_path, method: :delete %></p>
 </div>

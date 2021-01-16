@@ -8,7 +8,19 @@ class Customers::CirclesController < ApplicationController
     @circle = Circle.find(params[:id])
     @c = @circle.place
     @p = JpPrefecture::Prefecture.find(@c)
+
+    #平均点-------------------
+    @reviews=Review.where(circle_id: @circle.id)
+    review_sum=0
+
+    @reviews.each do |x|
+      review_sum = review_sum + x.rank
+    end
+
+    @review_ave=review_sum.to_f/@reviews.size
+
   end
+
 
   def new
     @circle = Circle.new
