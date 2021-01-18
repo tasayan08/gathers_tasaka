@@ -1,0 +1,11 @@
+<h1>サークル一覧</h1>
+ <% circles.each do |circle| %>
+   <div>
+    <%#= attachment_image_tag post_image, :image %>
+    <p>投稿ユーザー画像：</p>
+    <p>サークル名：<%= link_to circle.circle_name, customer_circle_path(circle.customer_id, circle.id) %></p>
+    <p>説明：<%= circle.explanation %></p>
+    <p>ユーザーネーム：<%= circle.customer.name %></p>
+    <h3>--------------------------------------</h3>
+   </div>
+  <% end %>

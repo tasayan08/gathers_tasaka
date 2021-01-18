@@ -1,12 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'reviews/new'
-  get 'reviews/create'
-  get 'reviews/destroy'
-  get 'ivents/index'
-  get 'ivents/show'
-  get 'ivents/edit'
-  get 'ivents/new'
+  get 'search/search'
+  get 'search/index'
+
   devise_for :admins, controllers: {
     registrations: 'admins/registrations',
     sessions: 'admins/sessions',
@@ -33,7 +29,11 @@ Rails.application.routes.draw do
   scope module: :customers do
     resources :customers,:except => [:show, :edit, :new, :create] do
       resources :circles do
-       resources :reviews
+       resources :reviews, :except => [:index] do
+        member do
+          get "/reviews" => "reviews#index"
+        end
+       end
        resources :ivents
       end
       get "/my_page" => "customers#show"

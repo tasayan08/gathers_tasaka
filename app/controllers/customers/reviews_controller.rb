@@ -4,7 +4,8 @@ class Customers::ReviewsController < ApplicationController
   end
 
   def index
-   @reviews = Review.all
+    # binding.pry
+   @reviews = Review.where(circle_id: params[:id])
   end
 
   def create

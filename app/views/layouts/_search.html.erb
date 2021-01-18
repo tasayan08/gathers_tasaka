@@ -1,0 +1,5 @@
+  <%= form_with url: search_search_path, method: :get, local: true do |f| %>
+    <%= f.text_field :content %>
+    <%= f.select :model, options_for_select({ "サークル" => "circle", "イベント" => "ivent" }) %>
+    <%= f.submit '検索' %>
+  <% end %>

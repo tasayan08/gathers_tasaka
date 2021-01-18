@@ -18,7 +18,7 @@
         score: <%= @review_ave %>,
       });
     </script>
-  <%= @review_ave %> (<%= link_to @reviews.size,"/" %>)
+  <%= @review_ave %> (<%= link_to @reviews.size, reviews_customer_circle_review_path(:circle_id => @circle.id ) %>)
   <p><%= link_to "このサークルを編集する", edit_customer_circle_path %></p>
   <p><%= link_to "このサークルのイベントを追加する", new_customer_circle_ivent_path(@circle.customer_id,@circle.id) %></p>
   <p><%= link_to "このサークルのイベント一覧", customer_circle_ivents_path(@circle.customer_id,@circle.id) %></p>

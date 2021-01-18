@@ -44,6 +44,9 @@
        <%= link_to "adminログイン",new_admin_session_path %>
      </li>
     <% end %>
+    <li>
+     <%= render 'layouts/search' %>
+    </li>
     <%= yield %>
   </body>
 </html>

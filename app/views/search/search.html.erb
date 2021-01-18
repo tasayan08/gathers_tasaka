@@ -1,0 +1,7 @@
+<% if @model == 'circle' %>
+    <h3> サークルの検索結果 "<%= @content %>"</h3>
+  <%= render 'customers/circles/index', circles: @records %>
+<% elsif @model == 'ivent' %>
+    <h3> イベントの検索結果 "<%= @content %>"</h3>
+  <%= render 'customers/ivents/index', ivents: @records %>
+<% end %>

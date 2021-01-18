@@ -12,13 +12,11 @@ class Customers::CirclesController < ApplicationController
     #平均点-------------------
     @reviews=Review.where(circle_id: @circle.id)
     review_sum=0
-
     @reviews.each do |x|
       review_sum = review_sum + x.rank
     end
 
     @review_ave=review_sum.to_f/@reviews.size
-
   end
 
 
