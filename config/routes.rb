@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   get 'search/search'
+  get 'search/search_pref'
   get 'search/index'
 
   devise_for :admins, controllers: {

@@ -65,10 +65,11 @@ gem 'cancancan'
 gem 'rolify'
 gem 'kaminari'
 gem 'jquery-rails'
-gem 'bootstrap-sass'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem 'dotenv-rails'
 gem 'rubocop'
 gem 'pry-rails'
 gem "refile-mini_magick"
 gem 'jp_prefecture'
+gem 'bootstrap','~> 4.5'
+gem "bootswatch", github: "thomaspark/bootswatch"

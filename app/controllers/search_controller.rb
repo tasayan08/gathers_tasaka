@@ -10,6 +10,9 @@ class SearchController < ApplicationController
     end
   end
 
-  def index
+  def search_pref
+    session[:pref]=params[:pref]
+    binding.pry
+    redirect_to request.referer
   end
 end

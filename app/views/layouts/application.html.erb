@@ -45,6 +45,10 @@
      </li>
     <% end %>
     <li>
+     <%= render 'layouts/search_pref' %>
+    </li>
+    <%=session[:pref]%>
+    <li>
      <%= render 'layouts/search' %>
     </li>
     <%= yield %>
