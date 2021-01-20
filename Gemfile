@@ -67,6 +67,9 @@ gem 'kaminari'
 gem 'jquery-rails'
 gem "refile", require: "refile/rails", github: 'manfe/refile'
 gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end
 gem 'rubocop'
 gem 'pry-rails'
 gem "refile-mini_magick"
