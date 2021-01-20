@@ -6,6 +6,19 @@
   <p>ユーザーネーム：<%= @circle.customer.name %></p>
   <p>活動場所：<%= @p.name %></p>
   <p>ジャンル:<%= @circle.genre.genre_name %></p>
+  <% if @circle.favorited_by?(current_customer) %>
+    <p>
+      <%= link_to customer_favorites_path(@circle), method: :delete do %>
+        ♥<%= @circle.favorites.count %> いいね
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to customer_favorites_path(@circle), method: :post do %>
+        ♡<%= @circle.favorites.count %> いいね
+      <% end %>
+    </p>
+  <% end %>
   <span>評価：</span>
   <span id ="star-rate-<%= @circle.id %>"></span>
     <script>
@@ -20,8 +33,8 @@
     </script>
   <%= @review_ave %> (<%= link_to @reviews.size, reviews_customer_circle_review_path(:circle_id => @circle.id ) %>)
   <p><%= link_to "このサークルを編集する", edit_customer_circle_path %></p>
-  <p><%= link_to "このサークルのイベントを追加する", new_customer_circle_ivent_path(@circle.customer_id,@circle.id) %></p>
-  <p><%= link_to "このサークルのイベント一覧", customer_circle_ivents_path(@circle.customer_id,@circle.id) %></p>
+  <p><%= link_to "このサークルのイベントを追加する", new_customer_circle_event_path(@circle.customer_id,@circle.id) %></p>
+  <p><%= link_to "このサークルのイベント一覧", customer_circle_events_path(@circle.customer_id,@circle.id) %></p>
   <p><%= link_to "このサークルを評価する", new_customer_circle_review_path(@circle.customer_id,@circle.id) %></p>
   <p><%=link_to "このサークルを削除する", customer_circle_path, method: :delete %></p>
 </div>

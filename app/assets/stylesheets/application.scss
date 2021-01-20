@@ -1,4 +1,5 @@
-@import "darkly/variables";
+@import "lux/variables";
 @import "bootstrap";
-@import "darkly/bootswatch";
+@import 'bootstrap-select';
+@import "lux/bootswatch";
 @import "*"; // これが無いとstylesheets内に個別のscssを読み込めない

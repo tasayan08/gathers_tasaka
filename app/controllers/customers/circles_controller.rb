@@ -1,7 +1,15 @@
 class Customers::CirclesController < ApplicationController
 
   def index
-    @circles = Circle.all
+    @mycircles = Circle.all
+  end
+
+  def all_index
+    if session[:pref].blank?
+     @circles = Circle.all
+    else
+     @circles = Circle.where(place: session[:pref])
+    end
   end
 
   def show

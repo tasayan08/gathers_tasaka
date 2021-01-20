@@ -45,9 +45,16 @@
      </li>
     <% end %>
     <li>
+     <%= link_to "全サークル",circles_all_path %>
+    </li>
+    <li>
+     <%= link_to "全イベント",events_all_path %>
+    </li>
+    <li>
      <%= render 'layouts/search_pref' %>
     </li>
     <%=session[:pref]%>
+    <p><%= link_to "都道府県解除", search_destroy_path, method: :delete %></p>
     <li>
      <%= render 'layouts/search' %>
     </li>

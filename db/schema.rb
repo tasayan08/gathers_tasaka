@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_14_071901) do
+ActiveRecord::Schema.define(version: 2021_01_09_074750) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -30,10 +30,10 @@ ActiveRecord::Schema.define(version: 2021_01_14_071901) do
     t.text "explanation"
     t.string "circle_name"
     t.string "place"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer "customer_id"
     t.integer "genre_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "customers", force: :cascade do |t|
@@ -52,19 +52,34 @@ ActiveRecord::Schema.define(version: 2021_01_14_071901) do
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
-  create_table "genres", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "genre_name"
-  end
-
-  create_table "ivenmts", force: :cascade do |t|
+  create_table "events", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "circle_id"
+    t.integer "place"
     t.string "title"
     t.text "body"
     t.string "image"
     t.boolean "active_status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorite_circles", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "circle_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorite_events", force: :cascade do |t|
+    t.integer "customer_id"
+    t.integer "eve_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "genre_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -81,6 +96,7 @@ ActiveRecord::Schema.define(version: 2021_01_14_071901) do
     t.text "body"
     t.integer "rank"
     t.string "image_id"
+    t.string "place"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

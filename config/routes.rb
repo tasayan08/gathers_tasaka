@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
   get 'search/search'
   get 'search/search_pref'
-  get 'search/index'
+  delete 'search/destroy'
+
 
   devise_for :admins, controllers: {
     registrations: 'admins/registrations',
@@ -26,6 +27,8 @@ Rails.application.routes.draw do
   end
 
 
+  get "/circles/all" => "customers/circles#all_index"
+  get "/events/all" => "customers/events#all_index"
 
   scope module: :customers do
     resources :customers,:except => [:show, :edit, :new, :create] do
@@ -35,13 +38,19 @@ Rails.application.routes.draw do
           get "/reviews" => "reviews#index"
         end
        end
-       resources :ivents
+       resources :events
       end
       get "/my_page" => "customers#show"
       get "/my_page/edit" => "customers#edit"
       get "/unsubscribe" => "customers#unsubscribe"
       patch "/withdraw" => "customers#withdraw"
     end
+  end
+
+
+  namespace :customers do
+    resources :favorite_circles, :only => [:index, :create, :destroy]
+    resources :favorite_events, :only => [:index, :create, :destroy]
   end
 
 end
@@ -73,4 +82,5 @@ end
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
 

@@ -6,13 +6,17 @@ class SearchController < ApplicationController
     if @model == "circle"
       @records = Circle.search_for(@content)
     else
-      @records = Ivenmt.search_for(@content)
+      @records = Event.search_for(@content)
     end
   end
 
   def search_pref
     session[:pref]=params[:pref]
-    binding.pry
+    redirect_to request.referer
+  end
+
+  def destroy
+    session.delete(:pref)
     redirect_to request.referer
   end
 end

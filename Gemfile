@@ -73,3 +73,4 @@ gem "refile-mini_magick"
 gem 'jp_prefecture'
 gem 'bootstrap','~> 4.5'
 gem "bootswatch", github: "thomaspark/bootswatch"
+gem 'bootstrap-select-rails'

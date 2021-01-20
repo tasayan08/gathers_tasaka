@@ -10,3 +10,13 @@ Admin.create!(
   email: 'test@test',
   password: 'testtest'
 )
+
+Customer.create!(
+  name: 'yuya',
+  email: 'a@a',
+  password: 'aaaaaa'
+)
+
+Genre.create!(
+  genre_name: 'バスケットボール'
+)

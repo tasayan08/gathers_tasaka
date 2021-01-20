@@ -5,9 +5,11 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :circles, dependent: :destroy
-  has_many :ivenmts, dependent: :destroy 
+  has_many :events, dependent: :destroy
   has_many :review, dependent: :destroy
-  
+  has_many :favorite_circles, dependent: :destroy
+  has_many :favorite_events, dependent: :destroy
+
 
   validates :name, presence: true
 
