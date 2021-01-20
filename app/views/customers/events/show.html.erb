@@ -4,6 +4,19 @@
   <p>イベント名：<%= @event.title %></p>
   <p>サークル説明：<%= @event.body %></p>
   <p>サークル名：<%= @event.circle.circle_name %></p>
+   <% if @event.favorited_by?(current_customer.id) %>
+    <p>
+      <%= link_to customers_favorite_event_path(@event), method: :delete do %>
+        ♥<%#= @circle.favorites.count %> いいねdelete
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= link_to customers_favorite_events_path(event_id: @event.id), method: :post do %>
+        ♡<%#= @circle.favorites.count %> いいねcreate
+      <% end %>
+    </p>
+  <% end %>
   <p><%= link_to "このイベントを編集する", edit_customer_circle_event_path %></p>
   <p><%=link_to "このイベントを削除する", customer_circle_event_path, method: :delete %></p>
 </div>

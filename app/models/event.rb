@@ -2,10 +2,10 @@ class Event < ApplicationRecord
   belongs_to :circle
   belongs_to :customer
   has_many :favorite_events, dependent: :destroy
-  
-  def favorited_by?(customer)
-   favorites.where(customer_id: customer.id).exists?
-  end
+
+def favorited_by?(x)
+  favorite_events.where(customer_id: x).present?
+end
 
 
   def self.search_for(content)

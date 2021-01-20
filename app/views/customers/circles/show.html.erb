@@ -6,16 +6,17 @@
   <p>ユーザーネーム：<%= @circle.customer.name %></p>
   <p>活動場所：<%= @p.name %></p>
   <p>ジャンル:<%= @circle.genre.genre_name %></p>
-  <% if @circle.favorited_by?(current_customer) %>
+  <%# binding.pry %>
+  <% if @circle.favorited_by?(current_customer.id) %>
     <p>
-      <%= link_to customer_favorites_path(@circle), method: :delete do %>
-        ♥<%= @circle.favorites.count %> いいね
+      <%= link_to customers_favorite_circle_path(@circle), method: :delete do %>
+        ♥<%#= @circle.favorites.count %> いいねdelete
       <% end %>
     </p>
     <% else %>
     <p>
-      <%= link_to customer_favorites_path(@circle), method: :post do %>
-        ♡<%= @circle.favorites.count %> いいね
+      <%= link_to customers_favorite_circles_path(circle_id: @circle.id), method: :post do %>
+        ♡<%#= @circle.favorites.count %> いいねcreate
       <% end %>
     </p>
   <% end %>
