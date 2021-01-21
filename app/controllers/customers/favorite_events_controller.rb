@@ -13,11 +13,11 @@ class Customers::FavoriteEventsController < ApplicationController
   end
 
   def index
+    @events=[]
+   current_customer.favorite_events.each do |x|
+    @events.push(x.event)
+    end
+    # @favorite_circles=current_customer.favorite_circles
   end
-  
-  private
-  
-  # def params_favorite_circle
-    # params.require(:)
-  
+
 end

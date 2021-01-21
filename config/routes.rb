@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
 
-  namespace :customers do
-    get 'favorite_events/create'
-    get 'favorite_events/destroy'
-    get 'favorite_events/index'
-  end
-  namespace :customers do
-    get 'favorite_circles/create'
-    get 'favorite_circles/destroy'
-    get 'favorite_circles/index'
-  end
+  # namespace :customers do
+  #   get 'favorite_events/create'
+  #   get 'favorite_events/destroy'
+  #   get 'favorite_events/index'
+  # end
+  # namespace :customers do
+  #   get 'favorite_circles/create'
+  #   get 'favorite_circles/destroy'
+  #   get 'favorite_circles/index'
+  # end
+  
   get 'search/search'
   get 'search/search_pref'
   delete 'search/destroy'

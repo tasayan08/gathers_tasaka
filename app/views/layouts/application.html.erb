@@ -23,6 +23,12 @@
      <li>
       <%= link_to 'マイサークル一覧', customer_circles_path(current_customer.id) %>
      </li>
+     <li>
+      <%= link_to 'お気に入りサークル一覧', customers_favorite_circles_path %>
+     </li>
+     <li>
+      <%= link_to 'お気に入りイベント一覧', customers_favorite_events_path %>
+     </li>
     <% elsif admin_signed_in? %>
      <li>
       <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>

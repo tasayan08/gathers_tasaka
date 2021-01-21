@@ -13,6 +13,12 @@ class Customers::FavoriteCirclesController < ApplicationController
   end
 
   def index
+  #@circleにfavorite_circleテーブルから引っ張ってきたcircle_idを使ってCircleテーブルのIDを探して入れる。
+   @circles=[]
+   current_customer.favorite_circles.each do |x|
+     @circles.push(x.circle)
+    end
+   # @favorite_circles=current_customer.favorite_circles
   end
 
 private
