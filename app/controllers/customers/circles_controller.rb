@@ -24,7 +24,7 @@ class Customers::CirclesController < ApplicationController
       review_sum = review_sum + x.rank
     end
 
-    @review_ave=review_sum.to_f/@reviews.size
+    @review_ave=review_sum.round(1).to_f/@reviews.size
   end
 
 
@@ -49,6 +49,7 @@ class Customers::CirclesController < ApplicationController
   def update
    @circle = Circle.find(params[:id])
    @circle.update(circle_params)
+   binding.pry
    redirect_to customer_circle_path(@circle)
   end
 

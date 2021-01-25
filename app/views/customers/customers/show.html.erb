@@ -1,17 +1,52 @@
-<h1>マイページ</h1>
- <h4>名前</h4>
- <%= @customer.name %>
- <h4>自己紹介</h4>
- <%= @customer.body %>
- 
- <li>
-  <%= link_to 'サークルを作る', new_customer_circle_path %>
- </li>
- <li>
-  <%= link_to 'マイサークル一覧', customer_circles_path %>
- </li>
- <li>
- <% if customer_signed_in? && @customer.id == current_customer.id %>
-  <%= link_to "退会", customer_withdraw_path(current_customer), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
- <% end %>
- </li>
+<div class="row">
+ <div class="col-lg-12">
+ <div class="card shadow">
+  <div class="card-header text-center">My Profile</div>
+    <div class="row">
+     <div class="col-2 m-auto">
+  				<%= attachment_image_tag @customer, :image, format: 'jpeg', size: "180x180", fallback: "no_image.png" %>
+     </div>
+     <div class="col-6 col-sm-4 col-md-6">
+      <div class="card-body text-center">
+       <h4>name:<%= @customer.name %></h4>
+        <hr class="my-4">
+       <h5>introduction:<%= @customer.body %></h5>
+        <hr class="my-4">
+      </div>
+     </div>
+　  </div>
+    <div class="card-footer">
+     <ul class="nav">
+       <li class="nav-item">
+          <!--Ajax-->
+        <%= link_to 'マイページ編集', customer_my_page_edit_path(current_customer.id),remote:true, class: "btn btn-secondary" %>
+       </li>
+       <li class="nav-item">
+        <%= link_to 'サークルを作る', new_customer_circle_path, class: "btn btn-secondary" %>
+       </li>
+       <li class="nav-item">
+        <%= link_to 'マイサークル一覧', customer_circles_path, class: "btn btn-secondary" %>
+       </li>
+       <li class="nav-item">
+        <%= link_to 'マイイベント一覧', root_path, class: "btn btn-secondary" %>
+       </li>
+       <li class="nav-item">
+        <% if customer_signed_in? && @customer.id == current_customer.id %>
+         <%= link_to "退会", customer_withdraw_path(current_customer), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+        <% end %>
+       </li>
+     </ul>
+    </div>
+  </div>
+</div>
+</div>
+
+  <!--Ajax通信で表示-->
+<div class="row">
+<div class="col-lg-12">
+<div class="card shadow">
+   <div class="card-body text-center" id="window">
+</div>
+</div>
+</div>
+

@@ -25,6 +25,7 @@ class CreateCircles < ActiveRecord::Migration[5.2]
     create_table :events do |t|
       t.integer :customer_id
       t.integer :circle_id
+      t.integer :genre_id
       t.integer :place
       t.string :title
       t.text :body

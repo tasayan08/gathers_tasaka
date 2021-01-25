@@ -1,5 +1,12 @@
-<%= form_with  url: search_search_pref_path, method: :get, local:true do |f| %>
-  <h4>活動場所選択</h4>
-  <%= f.collection_select :pref, JpPrefecture::Prefecture.all, :code, :name, { prompt: '都道府県選択' }, class: "selectpicker" %>
-  <%= f.submit '投稿' %>
-<% end %>
+ <div class="alert alert-secondary" role="alert">  
+  <%= form_with  url: search_search_pref_path, method: :get, local:true do |f| %>
+    <%= f.collection_select :pref, JpPrefecture::Prefecture.all, :code, :name, { prompt: '都道府県選択' }, class: "selectpicker" %>
+    <%= f.submit 'setting',class: "btn btn-secondary my-2 my-sm-0" %>
+  <% end %>
+  
+  <% if session[:pref]. present? %>
+   <% pref=JpPrefecture::Prefecture.find(session[:pref]).name%>
+   <span class="badge badge-pill badge-light"><%= pref%></span>
+  <% end %>
+  <span><%= link_to "都道府県設定解除", search_destroy_path, method: :delete,class:"badge badge-pill badge-secondary" %></span>
+ </div>

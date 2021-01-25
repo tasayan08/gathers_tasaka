@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :review, dependent: :destroy
   has_many :favorite_circles, dependent: :destroy
   has_many :favorite_events, dependent: :destroy
+  attachment :image
 
 
   validates :name, presence: true

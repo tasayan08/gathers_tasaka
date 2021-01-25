@@ -56,7 +56,7 @@ class Customers::EventsController < ApplicationController
   private
 
   def event_params
-   params.require(:event).permit(:customer_id, :circle_id, :title, :body, :image, :place)
+   params.require(:event).permit(:customer_id, :circle_id, :genre_id, :title, :body, :image, :place)
   end
 
 end

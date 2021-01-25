@@ -6,6 +6,14 @@ class Customers::CustomersController < ApplicationController
 
   def edit
    @customer = current_customer
+   # local => edit.html.erb
+   # remote => edit.js.erb
+   # redirect X
+   
+   
+   # remote sitei
+   # action.js.erb 
+  
   end
   
   def update
@@ -33,7 +41,7 @@ class Customers::CustomersController < ApplicationController
   private
   
   def customer_params
-    params.require(:customer).permit(:name, :body)
+    params.require(:customer).permit(:name, :body, :image)
   end
   
 end

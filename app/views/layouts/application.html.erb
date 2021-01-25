@@ -10,60 +10,13 @@
   </head>
 
   <body>
-    <% if customer_signed_in? %>
-     <li>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-     </li>
-     <li>
-      <%= link_to 'マイページ', customer_my_page_path(current_customer.id) %>
-     </li>
-     <li>
-      <%= link_to 'マイページ編集', customer_my_page_edit_path(current_customer.id) %>
-     </li>
-     <li>
-      <%= link_to 'マイサークル一覧', customer_circles_path(current_customer.id) %>
-     </li>
-     <li>
-      <%= link_to 'お気に入りサークル一覧', customers_favorite_circles_path %>
-     </li>
-     <li>
-      <%= link_to 'お気に入りイベント一覧', customers_favorite_events_path %>
-     </li>
-    <% elsif admin_signed_in? %>
-     <li>
-      <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-     </li>
-     <li>
-      <%= link_to "ジャンル一覧&追加", admins_genres_path %>
-     </li>
-    <% else %>
-     <li>
-       <%= link_to "新規admin登録",new_admin_registration_path %>
-     </li>
-     <li>
-       <%= link_to "新規会員登録", new_customer_registration_path %>
-     </li>
-     <li>
-       <%= link_to "会員ログイン", new_customer_session_path %>
-     </li>
-     <li>
-       <%= link_to "adminログイン",new_admin_session_path %>
-     </li>
-    <% end %>
-    <li>
-     <%= link_to "全サークル",circles_all_path %>
-    </li>
-    <li>
-     <%= link_to "全イベント",events_all_path %>
-    </li>
-    <li>
-     <%= render 'layouts/search_pref' %>
-    </li>
-    <%=session[:pref]%>
-    <p><%= link_to "都道府県解除", search_destroy_path, method: :delete %></p>
-    <li>
-     <%= render 'layouts/search' %>
-    </li>
-    <%= yield %>
+    <%= render 'layouts/header' %>
+    <%= render 'layouts/search_pref' %>
+    <main>
+      <div class="container">
+       <%= yield %>
+      </div>
+    </main>
+      <%= render 'layouts/footer' %>
   </body>
-</html>
+ </html>

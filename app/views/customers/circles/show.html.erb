@@ -1,41 +1,68 @@
-<h1>サークル詳細</h1>
-<div class="post-body">
-  <%#= attachment_image_tag @post_image, :image %>
-  <p>サークル名：<%= @circle.circle_name %></p>
-  <p>サークル説明：<%= @circle.explanation %></p>
-  <p>ユーザーネーム：<%= @circle.customer.name %></p>
-  <p>活動場所：<%= @p.name %></p>
-  <p>ジャンル:<%= @circle.genre.genre_name %></p>
-  <%# binding.pry %>
-  <% if @circle.favorited_by?(current_customer.id) %>
-    <p>
-      <%= link_to customers_favorite_circle_path(@circle), method: :delete do %>
-        ♥<%#= @circle.favorites.count %> いいねdelete
-      <% end %>
-    </p>
-    <% else %>
-    <p>
-      <%= link_to customers_favorite_circles_path(circle_id: @circle.id), method: :post do %>
-        ♡<%#= @circle.favorites.count %> いいねcreate
-      <% end %>
-    </p>
-  <% end %>
-  <span>評価：</span>
-  <span id ="star-rate-<%= @circle.id %>"></span>
-    <script>
-      $('#star-rate-<%= @circle.id %>').raty({
-        size: 36,
-        starOff: "<%= asset_path('star-off.png') %>",
-        starOn: "<%= asset_path('star-on.png') %>",
-        starHalf: "<%= asset_path('star-half.png') %>",
-        readOnly: true,
-        score: <%= @review_ave %>,
-      });
-    </script>
-  <%= @review_ave %> (<%= link_to @reviews.size, reviews_customer_circle_review_path(:circle_id => @circle.id ) %>)
-  <p><%= link_to "このサークルを編集する", edit_customer_circle_path %></p>
-  <p><%= link_to "このサークルのイベントを追加する", new_customer_circle_event_path(@circle.customer_id,@circle.id) %></p>
-  <p><%= link_to "このサークルのイベント一覧", customer_circle_events_path(@circle.customer_id,@circle.id) %></p>
-  <p><%= link_to "このサークルを評価する", new_customer_circle_review_path(@circle.customer_id,@circle.id) %></p>
-  <p><%=link_to "このサークルを削除する", customer_circle_path, method: :delete %></p>
+<div class="row">
+<div class="col-lg-12">
+<div class="card shadow">
+   <div class="card-body text-center">
+      <h1>Details</h1>
+          <hr class="my-4">
+          <%= attachment_image_tag @circle, :image, format: 'jpeg', size: "700x400", fallback: "no_image.png" %>
+          <hr class="my-4">
+          <h5>サークル名：<%= @circle.circle_name %>　❤️<%= @circle.favorite_circles.count %> </h5>
+          <hr class="my-4">
+          <p>サークル紹介文：<%= @circle.explanation %></p>
+          <hr class="my-4">
+          <p>作成者：<%= @circle.customer.name %></p>
+          <hr class="my-4">
+          <p>活動場所⇨<%= @p.name %>　　ジャンル⇨<%= @circle.genre.genre_name %></p>
+          <% if @circle.favorited_by?(current_customer.id) %>
+            <p>
+              <%= link_to customers_favorite_circle_path(@circle), method: :delete do %>
+                ♥Favorite
+              <% end %>
+            </p>
+            <% else %>
+            <p>
+              <%= link_to customers_favorite_circles_path(circle_id: @circle.id), method: :post do %>
+                ♡Favorite
+              <% end %>
+            </p>
+          <% end %>
+          <span>Review：</span>
+          <span id ="star-rate-<%= @circle.id %>"></span>
+            <script>
+              $('#star-rate-<%= @circle.id %>').raty({
+                size: 36,
+                starOff: "<%= asset_path('star-off.png') %>",
+                starOn: "<%= asset_path('star-on.png') %>",
+                starHalf: "<%= asset_path('star-half.png') %>",
+                readOnly: true,
+                score: <%= @review_ave %>,
+              });
+            </script>
+          <%= @review_ave %> (<%= link_to @reviews.size, reviews_customer_circle_review_path(:circle_id => @circle.id ) %>)
+     </div>
+    <div class="card-footer">
+     <ul class="nav">
+       <li class="nav-item">
+        <%= link_to "このサークルのイベント一覧", customer_circle_events_path(@circle.customer_id,@circle.id), class: "btn btn-secondary" %>
+       </li>
+       <% if current_customer.id != @circle.customer_id %>
+       <li class="nav-item">
+        <%= link_to "このサークルを評価する", new_customer_circle_review_path(@circle.customer_id,@circle.id), class: "btn btn-secondary" %>
+       </li>
+       <% end %>
+       <% if current_customer.id == @circle.customer_id %>
+       <li class="nav-item">
+        <%= link_to "このサークルを編集する", edit_customer_circle_path, class: "btn btn-secondary" %>
+       </li>
+       <li class="nav-item">
+        <%= link_to "このサークルのイベントを追加する", new_customer_circle_event_path(@circle.customer_id,@circle.id), class: "btn btn-secondary" %>
+       </li>
+       <li class="nav-item">
+         <%=link_to "このサークルを削除する", customer_circle_path, method: :delete, class: "btn btn-secondary" %>
+       </li>
+       <% end %>
+     </ul>
+    </div>
+</div>
+</div>
 </div>

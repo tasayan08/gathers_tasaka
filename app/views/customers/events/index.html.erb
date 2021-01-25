@@ -1,13 +1,7 @@
 <h1>マイイベント一覧</h1>
-<% @myevents.each do |event| %>
-  <div>
-    <%#= attachment_image_tag post_image, :image %>
-    <p>投稿ユーザー画像：</p>
-    <p>イベント名：<%= link_to event.title, customer_circle_event_path(event.customer_id, event.circle_id, event.id) %></p>
-    <p>イベント内容：<%= event.body %></p>
-    <p>サークルネーム：<%= event.circle.circle_name %></p>
-    <% pref=JpPrefecture::Prefecture.find(event.place.to_i).name%>
-    <p>活動場所: <%= pref%></p>
-    <h3>--------------------------------------</h3>
-  </div>
-<% end %>
+<%= render 'customers/events/index', events: @myevents %>
+
+
+
+
+

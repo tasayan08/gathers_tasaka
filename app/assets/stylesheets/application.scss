@@ -3,3 +3,43 @@
 @import 'bootstrap-select';
 @import "lux/bootswatch";
 @import "*"; // これが無いとstylesheets内に個別のscssを読み込めない
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  // color: #6c6b6b;
+}
+
+
+body{
+    background: #eee;
+}
+span{
+    font-size:15px;
+}
+
+.container {
+  height: 100%;
+}
+
+
+
+//footer-------------------------------------
+#wrapper{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+footer{
+    width: 100%;
+    height: 100px;
+    background-color: #211f1e;
+    text-align: center;
+    margin-top: auto;
+    padding-top: 20px;
+}
+ul.footer-menu li {
+display: inline;
+}

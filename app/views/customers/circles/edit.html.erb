@@ -1,13 +1,10 @@
-<h1>サークル編集</h1>
-<%= form_with model: @circle, url: customer_circle_path, local:true do |f| %>
-  <h4>サークル名</h4>
-  <%= f.text_field :circle_name, autofocus: true, placeholder:"サークル名"%>
-  <h4>サークル紹介</h4>
-  <%= f.text_area :explanation, autofocus: true, placeholder:"サークル紹介"%>
-  <h4>活動場所選択</h4>
-  <%= f.collection_select :place, JpPrefecture::Prefecture.all, :code, :name, { prompt: '選択してください' }, class: 'form-control' %>
-  <h4>ジャンル選択</h4>
-  <%= f.label :genre_name, "ジャンル", class: "control-label" %>
-  <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, { prompt: "--選択してください--" }, class: "form-control" %>
-  <%= f.submit "変更を保存" %>
-<% end %>
+<div class="row">
+<div class="col-lg-12">
+<div class="card shadow">
+   <div class="card-body text-center">
+      <h1>サークルを編集する</h1>
+      <%= render 'customers/circles/form', circle: @circle %>
+      </div>
+</div>
+</div>
+</div>

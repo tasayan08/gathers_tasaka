@@ -12,9 +12,8 @@ class Customers::ReviewsController < ApplicationController
     @review.customer_id = params["customer_id"]
     @review.circle_id = params["circle_id"]
     @review.rank = params.permit(:rank)["rank"]
-
     if @review.save
-     redirect_to customer_circle_reviews_path
+     redirect_to customer_circle_path(@review.customer.id, @review.circle.id)
     else
      render "new"
     end
@@ -23,7 +22,7 @@ class Customers::ReviewsController < ApplicationController
   def destroy
     @review = Review.find(params[:id])
     @review.destroy
-    redirect_to customer_circle_reviews_path
+    redirect_to customer_circle_path(@review.customer.id, @review.circle.id)
   end
 
   private

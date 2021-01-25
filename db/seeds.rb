@@ -17,6 +17,18 @@ Customer.create!(
   password: 'aaaaaa'
 )
 
+Customer.create!(
+  name: 'ともや',
+  email: 'aa@aa',
+  password: 'aaaaaa'
+)
+
+
 Genre.create!(
   genre_name: 'バスケットボール'
+)
+
+
+Genre.create!(
+  genre_name: 'バレーボール'
 )

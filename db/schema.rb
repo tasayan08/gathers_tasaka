@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_09_074750) do
+ActiveRecord::Schema.define(version: 2021_01_24_082650) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -55,10 +55,11 @@ ActiveRecord::Schema.define(version: 2021_01_09_074750) do
   create_table "events", force: :cascade do |t|
     t.integer "customer_id"
     t.integer "circle_id"
+    t.integer "genre_id"
     t.integer "place"
     t.string "title"
     t.text "body"
-    t.string "image"
+    t.string "image_id"
     t.boolean "active_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

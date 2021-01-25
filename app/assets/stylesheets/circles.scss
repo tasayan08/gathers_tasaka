@@ -1,3 +1,27 @@
 // Place all the styles related to the circles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// a{
+//   text-decoration:none; 
+//   color: #0062cc;
+//   border-bottom:2px solid #0062cc;
+// }
+.box{
+    padding:60px 0px;
+}
+
+.box-part{
+    background:#FFF;
+    border-radius:0;
+    padding:60px 10px;
+    margin:30px 0px;
+}
+.text{
+    margin:20px 0px;
+}
+
+.fa{
+     color:#4183D7;
+}

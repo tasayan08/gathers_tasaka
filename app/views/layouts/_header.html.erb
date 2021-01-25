@@ -1,0 +1,63 @@
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+  <a class="navbar-brand" href="#">gathers</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarColor01">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Home", root_path, class: "nav-link" %>
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+       <%= link_to "全サークル一覧",circles_all_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+       <%= link_to "全イベント一覧",events_all_path, class: "nav-link" %>
+      </li>
+     <% if customer_signed_in? %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MyPage</a>
+        <div class="dropdown-menu">
+          <%= link_to 'マイページ', customer_my_page_path(current_customer.id), class: "dropdown-item" %>
+          <%= link_to 'マイページ編集', customer_my_page_edit_path(current_customer.id), class: "dropdown-item" %>
+          <%= link_to 'マイサークル', customer_circles_path(current_customer.id), class: "dropdown-item" %>
+          <!--<#%= link_to 'マイイベント', customer_circle_events_path(current_customer.id,current_customer.event.circle_id), class: "dropdown-item" %>-->
+          <div class="dropdown-divider"></div>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Favorite</a>
+        <div class="dropdown-menu">
+          <%= link_to 'お気に入りサークル一覧', customers_favorite_circles_path, class: "dropdown-item"  %>
+          <%= link_to 'お気に入りイベント一覧', customers_favorite_events_path, class: "dropdown-item" %>
+          <!--<div class="dropdown-divider"></div>-->
+        </div>
+      </li>
+      <li class="nav-item">
+       <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
+      </li>
+      <% elsif admin_signed_in? %>
+       <li class="nav-item">
+        <%= link_to "ジャンル一覧&追加", admins_genres_path, class: "nav-link" %>
+       </li>
+       <li class="nav-item">
+        <%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+       </li>
+       <% else %>
+       <li class="nav-item">
+        <%= link_to "新規会員登録", new_customer_registration_path, class: "nav-link" %>
+       </li>
+       <li class="nav-item">
+        <%= link_to "会員ログイン", new_customer_session_path, class: "nav-link" %>
+       </li>
+       <li class="nav-item">
+        <%= link_to "管理者ログイン",new_admin_session_path, class: "nav-link" %>
+       </li>
+      <% end %>
+    </ul>
+     <%= render 'layouts/search', class: "form-inline my-2 my-lg-0" %>
+   </div>
+  </nav>

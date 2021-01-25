@@ -1,12 +1,17 @@
-<% events.each do |event| %>
-<div>
-  <%#= attachment_image_tag post_image, :image %>
-  <p>投稿ユーザー画像：</p>
-  <p>イベント名：<%= link_to event.title, customer_circle_event_path(event.customer_id, event.circle_id, event.id) %></p>
-  <p>イベント内容：<%= event.body %></p>
-  <p>サークルネーム：<%= event.circle.circle_name %></p>
-  <% pref=JpPrefecture::Prefecture.find(event.place.to_i).name%>
-  <p>活動場所: <%= pref%></p>
-  <h3>--------------------------------------</h3>
-</div>
-<% end %>
+<div class="box">
+  <div class="container">
+   	<div class="row">
+       <% events.each do |event| %>
+      	 <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <div class="box-part text-center">
+            <%=link_to (attachment_image_tag event, :image, format: 'jpeg', size: "300x200", fallback: "no_image.png"),customer_circle_event_path(event.customer_id, event.circle_id, event.id) %>
+            <p>イベント名：<%= link_to event.title, customer_circle_event_path(event.customer_id, event.circle_id, event.id) %></p>
+            <p>イベント内容：<%= event.body %></p>
+            <p>サークルネーム：<%= event.circle.circle_name %></p>
+            <% pref=JpPrefecture::Prefecture.find(event.place.to_i).name%>
+            <p>活動場所: <%= pref%></p>
+          </div>
+         </div>
+        <% end %>
+	　</div>
+  </div>
