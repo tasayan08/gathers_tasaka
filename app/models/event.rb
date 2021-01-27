@@ -11,11 +11,7 @@ end
 
 
   def self.search_for(content)
-    if content == 'perfect'
-      Event.where(title: content)
-    else
-      Event.where('title LIKE ?', '%'+content+'%')
-    end
+    Event.where('title LIKE ?', '%'+content+'%')
   end
 
 end

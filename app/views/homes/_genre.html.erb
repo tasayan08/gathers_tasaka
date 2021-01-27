@@ -1,0 +1,19 @@
+<section>
+  <div class="container">
+      <div class="text-muted mt-5 mb-5 text-center display-4">ジャンルからイベントを探す</div>
+      <hr/>
+      <div class="row">
+        <% genres.each do |genre| %>
+            <div class="col-xs-6 col-sm-6 col-md-3 col-lg-3 p-2">
+                <div class="card p-3 shadow text-center border-0">
+                    <div class="card-body">
+                        <%=link_to (attachment_image_tag genre, :image, format: 'jpeg', size: "200x150", fallback: "no_image.png"), genre_path('search[value]': genre.id, 'search[how]': "match") %>
+                        <hr/>
+                        <h2 class="card-title display-1" style="font-size:2.0vmin;"><%= genre.genre_name %></h2>
+                    </div>
+                </div>
+            </div>
+        <% end %>
+        </div>
+  </div>
+</section>

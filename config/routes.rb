@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   #   get 'favorite_circles/destroy'
   #   get 'favorite_circles/index'
   # end
-  
+
   get 'search/search'
   get 'search/search_pref'
   delete 'search/destroy'
@@ -30,6 +30,7 @@ Rails.application.routes.draw do
 
   root to: 'homes#top'
   get "/about" => "homes#about"
+  get "/genre" => "homes#index"
 
   namespace :admins do
     resources :customers

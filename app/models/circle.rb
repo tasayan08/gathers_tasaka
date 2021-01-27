@@ -16,11 +16,7 @@ end
 
 
 def self.search_for(content)
-  if content == 'perfect'
-    Circle.where(circle_name: content)
-  else
-    Circle.where('circle_name LIKE ?', '%'+content+'%')
-  end
+  Circle.where('circle_name LIKE ?', '%'+content+'%')
 end
 
 

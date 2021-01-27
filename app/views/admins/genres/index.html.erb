@@ -1,14 +1,17 @@
 <h1>ジャンル一覧＆作成</h1>
   <%= form_with model: @genre, url: admins_genres_path, local: true do |f| %>
     <div>
+      <%= f.label :画像 %>
+      <%= f.attachment_field :image %>
       <%= f.label :ジャンル %>
       <%= f.text_field :genre_name, class: 'genre_name' %>
       <%= f.submit '追加', class: 'btn btn-info' %>
     </div>
   <% end %>
-  
+
   <h1>---------------------------------</h1>
   <% @genres.each do |genre| %>
+   <%= attachment_image_tag genre, :image, format: 'jpeg', size: "200x150", fallback: "no_image.png" %>
    <p><%= genre.genre_name %></p>
    <p><%= link_to "編集する", edit_admins_genre_path(genre) %></p>
    <h4>-----------------------------------</h4>

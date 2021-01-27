@@ -9,11 +9,13 @@ class SearchController < ApplicationController
       @records = Event.search_for(@content)
     end
   end
+  
 
   def search_pref
     session[:pref]=params[:pref]
     redirect_to request.referer
   end
+  
 
   def destroy
     session.delete(:pref)

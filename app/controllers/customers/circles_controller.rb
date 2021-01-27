@@ -49,7 +49,6 @@ class Customers::CirclesController < ApplicationController
   def update
    @circle = Circle.find(params[:id])
    @circle.update(circle_params)
-   binding.pry
    redirect_to customer_circle_path(@circle)
   end
 
