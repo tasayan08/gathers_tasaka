@@ -9,7 +9,7 @@
              <%=link_to (attachment_image_tag circle, :image, format: 'jpeg', size: "300x200", fallback: "no_image.png"),customer_circle_path(circle.customer_id, circle.id) %>
              <p>サークル名：<%= link_to circle.circle_name, customer_circle_path(circle.customer_id, circle.id) %></p>
              <p>説明：<%= circle.explanation %></p>
-             <p>ユーザーネーム：<%= circle.customer.name %></p>
+             <p>ユーザーネーム：<%= link_to circle.customer.name, customer_my_page_path(circle.customer) %></p>
              <% pref=JpPrefecture::Prefecture.find(circle.place.to_i).name%>
              <p>活動場所: <%= pref%></p>
             </div>

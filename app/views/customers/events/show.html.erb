@@ -10,12 +10,12 @@
           <hr class="my-4">
           <p>イベント内容：<%= @event.body %></p>
           <hr class="my-4">
-          <p>作成者：<%= @event.customer.name %></p>
+          <p>作成者：<%= link_to @event.customer.name, customer_my_page_path(@event.customer) %></p>
           <hr class="my-4">
           <% pref=JpPrefecture::Prefecture.find(@event.place.to_i).name%>
           <p>活動場所⇨<%= pref%>　　ジャンル⇨<%= @event.genre.genre_name %></p>
           <hr class="my-4">
-          <p>サークル名：<%= @event.circle.circle_name %></p>
+          <p>サークル名：<%= link_to @event.circle.circle_name, customer_circle_path(@event.customer, @event.circle) %></p>
            <% if @event.favorited_by?(current_customer.id) %>
           <hr class="my-4">
             <p>

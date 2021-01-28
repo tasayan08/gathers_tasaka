@@ -9,7 +9,14 @@ class Customers::EventsController < ApplicationController
   end
 
   def index
-    @myevents = Event.where(circle_id: params[:circle_id])
+    # @myevents = Event.where(circle_id: params[:circle_id])
+    @circles = Circle.where(customer_id: params[:customer_id])
+    @events = []
+    @circles.each do |circle|
+      circle.events.each do |event|
+        @events.push(event)
+      end
+    end
   end
 
   def show

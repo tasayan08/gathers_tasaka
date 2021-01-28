@@ -4,7 +4,7 @@
    <div class="card-body text-center">
       <h1>サークルを編集する</h1>
         <hr class="my-4">
-      <%= form_with model: circle, url: customer_circle_path, local:true do |f| %>
+      <%= form_with model: @circle, url: customer_circle_path, local:true do |f| %>
         <h4>画像</h4>
         <%= f.attachment_field :image %>
         <hr class="my-4">

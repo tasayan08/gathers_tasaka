@@ -10,7 +10,7 @@
           <hr class="my-4">
           <p>サークル紹介文：<%= @circle.explanation %></p>
           <hr class="my-4">
-          <p>作成者：<%= @circle.customer.name %></p>
+          <p>作成者：<%= link_to @circle.customer.name, customer_my_page_path(@circle.customer) %></p>
           <hr class="my-4">
           <p>活動場所⇨<%= @p.name %>　　ジャンル⇨<%= @circle.genre.genre_name %></p>
           <% if @circle.favorited_by?(current_customer.id) %>

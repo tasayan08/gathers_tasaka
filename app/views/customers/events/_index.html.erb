@@ -7,7 +7,7 @@
             <%=link_to (attachment_image_tag event, :image, format: 'jpeg', size: "300x200", fallback: "no_image.png"),customer_circle_event_path(event.customer_id, event.circle_id, event.id) %>
             <p>イベント名：<%= link_to event.title, customer_circle_event_path(event.customer_id, event.circle_id, event.id) %></p>
             <p>イベント内容：<%= event.body %></p>
-            <p>サークルネーム：<%= event.circle.circle_name %></p>
+            <p>サークルネーム：<%= link_to event.circle.circle_name, customer_circle_path(event.customer, event.circle) %></p>
             <% pref=JpPrefecture::Prefecture.find(event.place.to_i).name%>
             <p>活動場所: <%= pref%></p>
           </div>
