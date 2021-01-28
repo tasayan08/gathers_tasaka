@@ -1,20 +1,30 @@
-<h1>レビューを書く</h1>
-<div class="new-comment">
-<%= form_with model: @review, url: customer_circle_reviews_path, local: true do |f| %>
-  <p><%= f.text_area :title, rows:'1',placeholder: "表題" %></p>
-  <p><%= f.text_area :body, rows:'5',placeholder: "レビューをここに" %></p>
-  <div class="field" id="star">
-  <%= f.label :rank, "評価：" %>
-  <%= f.hidden_field :rank, :value => "rank" %>
-  <script>
-   $('#star').raty({
-    size     : 36,
-    starOff:  '<%= asset_path('star-off.png') %>',
-    starOn : '<%= asset_path('star-on.png') %>',
-    scoreName: "rank",
-   });
-  </script>
-  </div>
-  <%= f.submit "送信する" %>
-<% end %>
+<div class="row">
+<div class="col-lg-12">
+<div class="card shadow">
+   <div class="card-body text-center">
+     <h1>レビューを書く</h1>
+     <hr class="my-4">
+     <div class="new-comment">
+     <%= form_with model: @review, url: customer_circle_reviews_path, local: true do |f| %>
+       <p><%= f.text_area :title, rows:'1',placeholder: "表題" %></p>
+       <p><%= f.text_area :body, rows:'5',placeholder: "レビューをここに" %></p>
+       <hr class="my-4">
+       <div class="field" id="star">
+       <%= f.label :rank, "評価：" %>
+       <%= f.hidden_field :rank, :value => "rank" %>
+       <script>
+        $('#star').raty({
+         size     : 36,
+         starOff:  '<%= asset_path('star-off.png') %>',
+         starOn : '<%= asset_path('star-on.png') %>',
+         scoreName: "rank",
+        });
+       </script>
+       </div>
+       <hr class="my-4">
+       <%= f.submit "送信する", class: "btn btn-secondary" %>
+     <% end %>
+     </div>
+</div>
+</div>
 </div>

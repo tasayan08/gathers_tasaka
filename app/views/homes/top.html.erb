@@ -1,7 +1,6 @@
 <div class="row">
   <%= image_tag "gathers.jpg", class:'top_image' %>
 </div>
-
 <div class="row">
   <div class="col-md-12 mt-5 text-center">
      <div class="about">
@@ -12,6 +11,7 @@
      </div>
   </div>
 </div>
-
-<%= render 'genre', genres: @genres %>
+<% if customer_signed_in? %>
+　<%= render 'genre', genres: @genres %>
+<% end %>
 

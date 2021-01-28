@@ -11,12 +11,6 @@
           <span class="sr-only">(current)</span>
         </a>
       </li>
-      <li class="nav-item">
-       <%= link_to "全サークル一覧",circles_all_path, class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-       <%= link_to "全イベント一覧",events_all_path, class: "nav-link" %>
-      </li>
      <% if customer_signed_in? %>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">MyPage</a>
@@ -35,6 +29,12 @@
           <%= link_to 'お気に入りイベント一覧', customers_favorite_events_path, class: "dropdown-item" %>
           <!--<div class="dropdown-divider"></div>-->
         </div>
+      <li class="nav-item">
+       <%= link_to "全サークル一覧",circles_all_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+       <%= link_to "全イベント一覧",events_all_path, class: "nav-link" %>
+      </li>
       </li>
       <li class="nav-item">
        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: "nav-link" %>
@@ -56,6 +56,10 @@
        <li class="nav-item">
         <%= link_to "管理者ログイン",new_admin_session_path, class: "nav-link" %>
        </li>
+       <li class="nav-item">
+        <%= link_to 'ゲストログイン（閲覧用）', homes_guest_sign_in_path, method: :post, class: "btn btn-success" %>
+       </li>
+
       <% end %>
     </ul>
      <%= render 'layouts/search', class: "form-inline my-2 my-lg-0" %>

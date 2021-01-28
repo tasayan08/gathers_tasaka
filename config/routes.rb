@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   #   get 'favorite_circles/index'
   # end
 
+  post '/homes/guest_sign_in', to: 'homes#new_guest'
+
   get 'search/search'
   get 'search/search_pref'
   delete 'search/destroy'
