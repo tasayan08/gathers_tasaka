@@ -12,6 +12,7 @@ class Customers::ReviewsController < ApplicationController
     @review.customer_id = params["customer_id"]
     @review.circle_id = params["circle_id"]
     @review.rank = params.permit(:rank)["rank"]
+    binding.pry
     if @review.save
      redirect_to customer_circle_path(@review.customer.id, @review.circle.id)
     else
